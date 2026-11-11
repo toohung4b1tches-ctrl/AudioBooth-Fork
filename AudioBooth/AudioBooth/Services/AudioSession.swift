@@ -3,7 +3,7 @@ import Foundation
 import Logging
 
 nonisolated enum AudioSession {
-  private static let queue = DispatchQueue(label: "me.jgrenier.AudioBS.AudioSession", qos: .userInitiated)
+  private static let queue = DispatchQueue(label: "com.rathyou.Maudiobooth.AudioSession", qos: .userInitiated)
 
   @MainActor
   @discardableResult

@@ -357,7 +357,7 @@ final class BookPlayerModel: PlayerView.Model {
 
   func playOnPhone() {
     guard connectivityManager.isReachable else {
-      errorMessage = String(localized: "iPhone not reachable.\nOpen AudioBooth on your iPhone and try again.")
+      errorMessage = String(localized: "iPhone not reachable.\nOpen Maudiobooth on your iPhone and try again.")
       return
     }
 

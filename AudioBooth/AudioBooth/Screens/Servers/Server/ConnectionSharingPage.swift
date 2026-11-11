@@ -8,7 +8,7 @@ struct ConnectionSharingPage: View {
 
   var body: some View {
     VStack(spacing: 20) {
-      Text("Share this QR code or link with another AudioBooth user to help them connect to your server")
+      Text("Share this QR code or link with another Maudiobooth user to help them connect to your server")
         .font(.subheadline)
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
@@ -109,7 +109,7 @@ extension ConnectionSharingPage {
 #Preview {
   let context = CIContext()
   let filter = CIFilter.qrCodeGenerator()
-  filter.message = Data("audiobooth://connection?data=test".utf8)
+  filter.message = Data("maudiobooth://connection?data=test".utf8)
   filter.correctionLevel = "L"
 
   let outputImage = filter.outputImage!
@@ -122,7 +122,7 @@ extension ConnectionSharingPage {
     ConnectionSharingPage(
       model: .init(
         qrCodeImage: qrCode,
-        connectionURL: URL(string: "audiobooth://connection?data=test")
+        connectionURL: URL(string: "maudiobooth://connection?data=test")
       )
     )
   }

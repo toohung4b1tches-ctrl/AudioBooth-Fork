@@ -29,7 +29,7 @@ final class CarPlayTabBar: NSObject {
   }
 
   private static var emptyTemplate: CPListTemplate {
-    let emptyTemplate = CPListTemplate(title: "AudioBooth", sections: [])
+    let emptyTemplate = CPListTemplate(title: "Maudiobooth", sections: [])
     emptyTemplate.emptyViewTitleVariants = ["Not Connected"]
     emptyTemplate.emptyViewSubtitleVariants = ["Connect to a server in the app"]
     return emptyTemplate

@@ -29,11 +29,11 @@
 		<true/>
 	</dict>
 	<key>CFBundleDisplayName</key>
-	<string>AudioBooth</string>
+	<string>Maudiobooth</string>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>$(ORG_IDENTIFIER).AudioBS</string>
+	<string>$(ORG_IDENTIFIER).Maudiobooth</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>AudioBooth needs access to your local network to connect to your Audiobookshelf server and stream audiobooks.</string>
+	<string>Maudiobooth needs access to your local network to connect to your Audiobookshelf server and stream audiobooks.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

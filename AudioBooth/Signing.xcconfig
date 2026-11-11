@@ -1,12 +1,17 @@
 // Signing.xcconfig
-// Default signing configuration for AudioBooth
+// Signing configuration for Maudiobooth.
 //
-// Maintainer: These defaults are used automatically.
-// Contributors: Copy Local.xcconfig.example to Local.xcconfig and update
-//               with your settings.
+// DEVELOPMENT_TEAM: your Apple team ID. For a free (Personal Team) account,
+// sign in under Xcode → Settings → Accounts, then pick the team once in
+// Signing & Capabilities, or paste its 10-character ID here.
 
-DEVELOPMENT_TEAM = 7MM2M9KD2W
-ORG_IDENTIFIER = me.jgrenier
+DEVELOPMENT_TEAM =
+ORG_IDENTIFIER = com.rathyou
+
+// Free Apple accounts can't use iCloud. CONTRIBUTOR_BUILD turns off iCloud
+// settings sync in UserPreferences.swift. Remove this line (and add the
+// ubiquity-kvstore entitlement back) once you have a paid developer account.
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) CONTRIBUTOR_BUILD
 
 // Pull in local overrides if they exist (the ? makes the include optional)
 #include? "Local.xcconfig"

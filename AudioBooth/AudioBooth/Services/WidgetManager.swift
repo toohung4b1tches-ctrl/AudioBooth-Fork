@@ -87,7 +87,7 @@ final class WidgetManager {
       playbackSpeed: player?.rate ?? 1.0
     )
 
-    if let sharedDefaults = UserDefaults(suiteName: "group.me.jgrenier.audioBS"),
+    if let sharedDefaults = UserDefaults(suiteName: "group.com.rathyou.maudiobooth"),
       let data = try? JSONEncoder().encode(state)
     {
       sharedDefaults.set(data, forKey: "playbackState")

@@ -9,9 +9,10 @@ struct AudioBoothShortcuts: AppShortcutsProvider {
     AppShortcut(
       intent: JumpIntoBookIntent(),
       phrases: [
-        "Jump into \(\.$book) with \(.applicationName)",
-        "Jump into \(\.$book) in \(.applicationName)",
-        "Read along with \(\.$book) in \(.applicationName)",
+        "Jump into my book with \(.applicationName)",
+        "Jump into my book in \(.applicationName)",
+        "Jump into \(.applicationName)",
+        "Read along in \(.applicationName)",
       ],
       shortTitle: "Jump into book",
       systemImageName: "book.fill"

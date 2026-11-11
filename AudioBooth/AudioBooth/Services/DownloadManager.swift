@@ -12,9 +12,9 @@ import UIKit
 final class DownloadManager: NSObject, ObservableObject {
   static let shared = DownloadManager()
 
-  nonisolated static let appGroupIdentifier = "group.me.jgrenier.audioBS"
+  nonisolated static let appGroupIdentifier = "group.com.rathyou.maudiobooth"
 
-  nonisolated static let sessionIdentifier = "me.jgrenier.AudioBS.download"
+  nonisolated static let sessionIdentifier = "com.rathyou.Maudiobooth.download"
 
   nonisolated static let appGroupContainer: URL = {
     guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier) else {

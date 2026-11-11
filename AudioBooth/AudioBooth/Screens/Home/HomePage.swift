@@ -190,7 +190,7 @@ struct HomePage: View {
           .foregroundColor(.primary)
 
         Text(
-          "AudioBooth plays the audiobooks and podcasts on your Audiobookshelf server. Connect one to start listening."
+          "Maudiobooth plays the audiobooks and podcasts on your Audiobookshelf server. Connect one to start listening."
         )
         .font(.body)
         .foregroundColor(.secondary)

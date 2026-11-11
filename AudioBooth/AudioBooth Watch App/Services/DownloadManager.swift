@@ -26,8 +26,8 @@ final class DownloadManager: NSObject, ObservableObject {
     }
   }
 
-  private static let sessionIdentifier = "me.jgrenier.AudioBS.watch.downloads"
-  private static let legacySessionPrefix = "me.jgrenier.AudioBS.watch.download."
+  private static let sessionIdentifier = "com.rathyou.Maudiobooth.watch.downloads"
+  private static let legacySessionPrefix = "com.rathyou.Maudiobooth.watch.download."
   private static let migrationKey = "downloads_migrated_to_shared_session"
   private static let autoResumeInterval: TimeInterval = 300
   private static let freshPayloadInterval: TimeInterval = 600

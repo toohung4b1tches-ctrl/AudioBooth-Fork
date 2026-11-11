@@ -31,14 +31,14 @@ final class OIDCAuthenticationManager {
     if #available(iOS 17.4, *) {
       callbackURL = try await session.authenticate(
         using: redirectURL,
-        callback: .customScheme("audiobooth"),
+        callback: .customScheme("maudiobooth"),
         preferredBrowserSession: .shared,
         additionalHeaderFields: customHeaders
       )
     } else {
       callbackURL = try await session.authenticate(
         using: redirectURL,
-        callbackURLScheme: "audiobooth",
+        callbackURLScheme: "maudiobooth",
         preferredBrowserSession: .shared
       )
     }
@@ -117,8 +117,8 @@ final class OIDCAuthenticationManager {
       URLQueryItem(name: "client_id", value: "AudioBooth"),
       URLQueryItem(name: "response_type", value: "code"),
       URLQueryItem(name: "scope", value: "openid"),
-      URLQueryItem(name: "redirect_uri", value: "audiobooth://oauth"),
-      URLQueryItem(name: "callback", value: "audiobooth://oauth"),
+      URLQueryItem(name: "redirect_uri", value: "maudiobooth://oauth"),
+      URLQueryItem(name: "callback", value: "maudiobooth://oauth"),
       URLQueryItem(name: "code_challenge", value: pkce.challenge),
       URLQueryItem(name: "code_challenge_method", value: "S256"),
     ]
@@ -235,7 +235,7 @@ enum OIDCError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidCallback:
-      return "Add **audiobooth://oauth** to your **Allowed Mobile Redirect URIs**"
+      return "Add **maudiobooth://oauth** to your **Allowed Mobile Redirect URIs**"
     case .authenticationFailed(let error):
       return "Authentication failed: \(error)"
     case .noAuthorizationCode(let available):

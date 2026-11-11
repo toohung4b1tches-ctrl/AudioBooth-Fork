@@ -47,7 +47,7 @@ struct AudioBoothLockscreenBookWidget: Widget {
     StaticConfiguration(kind: kind, provider: AudioBoothWidgetProvider()) { entry in
       LockscreenBookWidgetView(entry: entry)
     }
-    .configurationDisplayName("AudioBooth")
+    .configurationDisplayName("Maudiobooth")
     .description("Open now playing or recent book")
     .supportedFamilies([.accessoryCircular, .accessoryRectangular])
   }

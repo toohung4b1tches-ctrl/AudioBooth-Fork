@@ -70,43 +70,12 @@ struct SettingsView: View {
           Text("Preferences")
         }
 
-        TipJarView(model: model.tipJar)
-
-        Section {
-          externalLink(
-            url: "https://github.com/AudioBooth/AudioBooth/issues",
-            systemImage: "questionmark.bubble",
-            tint: .blue,
-            title: "Help & Feedback"
-          )
-          externalLink(
-            url: "https://discord.gg/D2BgqfBVCJ",
-            systemImage: "bubble.left.and.bubble.right",
-            tint: .purple,
-            title: "Join our Discord"
-          )
-          externalLink(
-            url: "mailto:AudioBooth@proton.me",
-            systemImage: "envelope",
-            tint: .orange,
-            title: "Email Support"
-          )
-        } header: {
-          Text("Support")
-        }
-
         Section {
           externalLink(
             url: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
             systemImage: "doc.text",
             tint: .gray,
             title: "Terms of Use"
-          )
-          externalLink(
-            url: "https://github.com/AudioBooth/AudioBooth/blob/main/PRIVACY.md",
-            systemImage: "hand.raised",
-            tint: .brown,
-            title: "Privacy Policy"
           )
         } header: {
           Text("Legal")

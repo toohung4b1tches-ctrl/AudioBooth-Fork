@@ -16,7 +16,7 @@ final class SleepTimerActivityCleanup {
 
   static let shared = SleepTimerActivityCleanup()
 
-  private let taskIdentifier = "me.jgrenier.AudioBS.dismiss-sleep-timer-activity"
+  private let taskIdentifier = "com.rathyou.Maudiobooth.dismiss-sleep-timer-activity"
 
   private init() {
     registerBackgroundTask()

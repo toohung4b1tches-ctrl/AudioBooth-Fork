@@ -67,7 +67,7 @@ final class ListeningStatsCardModel: ListeningStatsCard.Model {
       daysInARow: daysInARow
     )
 
-    if let sharedDefaults = UserDefaults(suiteName: "group.me.jgrenier.audioBS"),
+    if let sharedDefaults = UserDefaults(suiteName: "group.com.rathyou.maudiobooth"),
       let encoded = try? JSONEncoder().encode(data)
     {
       sharedDefaults.set(encoded, forKey: "listeningStats")

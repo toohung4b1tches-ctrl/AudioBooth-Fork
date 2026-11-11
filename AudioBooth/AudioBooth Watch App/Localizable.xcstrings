@@ -13,7 +13,7 @@
     "%lld%%" : {
       "shouldTranslate" : false
     },
-    "AudioBooth" : {
+    "Maudiobooth" : {
       "shouldTranslate" : false
     },
     "Available Offline" : {
@@ -1584,54 +1584,54 @@
         }
       }
     },
-    "iPhone not reachable.\nOpen AudioBooth on your iPhone and try again." : {
+    "iPhone not reachable.\nOpen Maudiobooth on your iPhone and try again." : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone kan ikke nås.\nÅbn AudioBooth på din iPhone, og prøv igen."
+            "value" : "iPhone kan ikke nås.\nÅbn Maudiobooth på din iPhone, og prøv igen."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone nicht erreichbar.\nÖffne AudioBooth auf deinem iPhone und versuche es erneut."
+            "value" : "iPhone nicht erreichbar.\nÖffne Maudiobooth auf deinem iPhone und versuche es erneut."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se puede acceder al iPhone.\nAbre AudioBooth en tu iPhone e inténtalo de nuevo."
+            "value" : "No se puede acceder al iPhone.\nAbre Maudiobooth en tu iPhone e inténtalo de nuevo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone injoignable.\nOuvrez AudioBooth sur votre iPhone et réessayez."
+            "value" : "iPhone injoignable.\nOuvrez Maudiobooth sur votre iPhone et réessayez."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone non raggiungibile.\nApri AudioBooth sul tuo iPhone e riprova."
+            "value" : "iPhone non raggiungibile.\nApri Maudiobooth sul tuo iPhone e riprova."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone недоступен.\nОткройте AudioBooth на iPhone и повторите попытку."
+            "value" : "iPhone недоступен.\nОткройте Maudiobooth на iPhone и повторите попытку."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法连接 iPhone。\n请在 iPhone 上打开 AudioBooth 后重试。"
+            "value" : "无法连接 iPhone。\n请在 iPhone 上打开 Maudiobooth 后重试。"
           }
         },
         "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "無法連接 iPhone。\n請在 iPhone 上開啟 AudioBooth 後再試一次。"
+            "value" : "無法連接 iPhone。\n請在 iPhone 上開啟 Maudiobooth 後再試一次。"
           }
         }
       }

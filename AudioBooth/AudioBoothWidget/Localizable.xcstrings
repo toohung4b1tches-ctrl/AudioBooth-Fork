@@ -111,7 +111,7 @@
     "%lld%%" : {
       "shouldTranslate" : false
     },
-    "AudioBooth" : {
+    "Maudiobooth" : {
       "shouldTranslate" : false
     },
     "Daily Goal" : {

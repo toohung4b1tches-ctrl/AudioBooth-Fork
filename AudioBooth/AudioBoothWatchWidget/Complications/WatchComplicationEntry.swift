@@ -46,7 +46,7 @@ struct WatchComplicationState: Codable {
 }
 
 enum WatchComplicationStorage {
-  private static let suiteName = "group.me.jgrenier.audioBS"
+  private static let suiteName = "group.com.rathyou.maudiobooth"
   private static let stateKey = "watchComplicationState"
 
   static var sharedDefaults: UserDefaults? {

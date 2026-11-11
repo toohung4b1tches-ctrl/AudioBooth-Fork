@@ -31,7 +31,7 @@ struct AudiobookshelfInfoView: View {
       .font(.body)
 
       Text(
-        "It stores your audiobooks and podcasts, tracks your progress, and serves them to apps like AudioBooth. There is no AudioBooth account and no AudioBooth cloud, so your library stays on hardware you control."
+        "It stores your audiobooks and podcasts, tracks your progress, and serves them to apps like Maudiobooth. There is no Maudiobooth account and no Maudiobooth cloud, so your library stays on hardware you control."
       )
       .font(.body)
       .foregroundStyle(.secondary)
@@ -91,7 +91,7 @@ struct AudiobookshelfInfoView: View {
       if let discordURL = model.discordURL {
         Link(destination: discordURL) {
           HStack(spacing: 6) {
-            Text("Get help on the AudioBooth Discord")
+            Text("Get help on the Maudiobooth Discord")
             Image(systemName: "arrow.up.forward")
               .font(.caption2)
               .accessibilityHidden(true)
@@ -124,7 +124,7 @@ extension AudiobookshelfInfoView {
     }
 
     let learnMoreURL = URL(string: "https://audiobookshelf.org")
-    let discordURL = URL(string: "https://discord.gg/D2BgqfBVCJ")
+    let discordURL: URL? = nil
   }
 }
 

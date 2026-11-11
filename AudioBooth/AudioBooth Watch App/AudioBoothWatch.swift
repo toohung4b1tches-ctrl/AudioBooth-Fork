@@ -21,7 +21,7 @@ struct AudioBoothWatch: App {
 }
 
 extension ImagePipeline {
-  nonisolated private static let dataCache = try? DataCache(name: "me.jgrenier.audioBS.watch.images")
+  nonisolated private static let dataCache = try? DataCache(name: "com.rathyou.maudiobooth.watch.images")
 
   nonisolated static func watch(customHeaders: [String: String]?) -> ImagePipeline {
     ImagePipeline {

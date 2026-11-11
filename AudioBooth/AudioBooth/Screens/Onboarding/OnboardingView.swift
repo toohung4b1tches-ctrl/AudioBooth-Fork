@@ -39,7 +39,7 @@ struct OnboardingView: View {
         .clipShape(.rect(cornerRadius: 22, style: .continuous))
         .accessibilityHidden(true)
 
-      Text("Welcome to AudioBooth")
+      Text("Welcome to Maudiobooth")
         .font(.largeTitle)
         .fontWeight(.bold)
         .multilineTextAlignment(.center)

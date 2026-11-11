@@ -48,7 +48,7 @@ struct CircularBookWidgetView: View {
   }
 
   private var icon: some View {
-    Label(String("AudioBooth"), image: "audiobooth.fill")
+    Label(String("Maudiobooth"), image: "audiobooth.fill")
       .labelStyle(.iconOnly)
   }
 }

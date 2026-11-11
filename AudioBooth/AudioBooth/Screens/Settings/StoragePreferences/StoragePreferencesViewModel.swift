@@ -80,7 +80,7 @@ final class StoragePreferencesViewModel: StoragePreferencesView.Model {
     } else {
       guard
         let appGroupURL = FileManager.default.containerURL(
-          forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+          forSecurityApplicationGroupIdentifier: "group.com.rathyou.maudiobooth"
         )
       else { return }
 
@@ -135,7 +135,7 @@ final class StoragePreferencesViewModel: StoragePreferencesView.Model {
   ) {
     guard
       let appGroupURL = FileManager.default.containerURL(
-        forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+        forSecurityApplicationGroupIdentifier: "group.com.rathyou.maudiobooth"
       )
     else {
       return (0, 0, 0, 0)
@@ -185,7 +185,7 @@ final class StoragePreferencesViewModel: StoragePreferencesView.Model {
     let servers = Audiobookshelf.shared.authentication.servers
     guard
       let appGroupURL = FileManager.default.containerURL(
-        forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+        forSecurityApplicationGroupIdentifier: "group.com.rathyou.maudiobooth"
       )
     else { return [] }
 

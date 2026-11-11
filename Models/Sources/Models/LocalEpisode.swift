@@ -34,7 +34,7 @@ public final class LocalEpisode {
 
     guard
       let appGroupURL = FileManager.default.containerURL(
-        forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+        forSecurityApplicationGroupIdentifier: "group.com.rathyou.maudiobooth"
       )
     else {
       return nil

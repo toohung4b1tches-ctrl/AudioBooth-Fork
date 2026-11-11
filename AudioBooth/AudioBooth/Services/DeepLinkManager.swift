@@ -13,7 +13,7 @@ class DeepLinkManager: ObservableObject {
 
   func handleDeepLink(_ url: URL) {
     guard
-      ["audiobooth", "audiobs"].contains(url.scheme),
+      url.scheme == "maudiobooth",
       let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
     else { return }
 
@@ -102,11 +102,11 @@ class DeepLinkManager: ObservableObject {
       return nil
     }
 
-    return URL(string: "audiobooth://connection/\(base64)")
+    return URL(string: "maudiobooth://connection/\(base64)")
   }
 
   static func decodeConnectionDeepLink(_ url: URL) -> ExportConnection? {
-    guard url.scheme == "audiobooth" || url.scheme == "audiobs",
+    guard url.scheme == "maudiobooth",
       let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
       components.host == "connection",
       let data = Data(base64Encoded: String(components.path.dropFirst()))

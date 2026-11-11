@@ -14,7 +14,7 @@ struct ContinueListeningView: View {
         content
       }
     }
-    .navigationTitle("AudioBooth")
+    .navigationTitle("Maudiobooth")
     .navigationDestination(for: WatchHomeSection.self) { section in
       SectionDetailView(model: SectionDetailViewModel(section: section))
     }

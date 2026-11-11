@@ -8,7 +8,7 @@ final class NetworkMonitor {
   static let didChange = Notification.Name("NetworkMonitorDidChange")
 
   private let monitor = NWPathMonitor()
-  private let queue = DispatchQueue(label: "me.jgrenier.AudioBS.NetworkMonitor")
+  private let queue = DispatchQueue(label: "com.rathyou.Maudiobooth.NetworkMonitor")
 
   private(set) var isConnected = true
   private(set) var interfaceType: NWInterface.InterfaceType?

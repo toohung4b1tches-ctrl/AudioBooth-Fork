@@ -13,7 +13,7 @@ final class SectionDetailViewModel: SectionDetailView.Model {
     state = .loading
 
     guard connectivityManager.isReachable else {
-      state = .error(String(localized: "iPhone not reachable.\nOpen AudioBooth on your iPhone and try again."))
+      state = .error(String(localized: "iPhone not reachable.\nOpen Maudiobooth on your iPhone and try again."))
       return
     }
 

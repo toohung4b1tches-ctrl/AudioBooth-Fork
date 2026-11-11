@@ -386,11 +386,11 @@ final class PageMatchViewModel: PageMatchSheet.Model {
       canScan
       ? String(
         localized:
-          "Point the camera at the page you're reading, or pick a photo of one you took earlier. AudioBooth listens to the audiobook to find the same words, starting from where you are now."
+          "Point the camera at the page you're reading, or pick a photo of one you took earlier. Maudiobooth listens to the audiobook to find the same words, starting from where you are now."
       )
       : String(
         localized:
-          "Pick a photo of the page you're reading. AudioBooth listens to the audiobook to find the same words, starting from where you are now."
+          "Pick a photo of the page you're reading. Maudiobooth listens to the audiobook to find the same words, starting from where you are now."
       )
   }
 }

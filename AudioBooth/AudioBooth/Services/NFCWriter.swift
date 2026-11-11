@@ -57,7 +57,7 @@ class NFCWriter: NSObject, ObservableObject, NFCNDEFReaderSessionDelegate {
 
           case .readWrite:
             let payload = NFCNDEFPayload.wellKnownTypeURIPayload(
-              string: "audiobooth://play/\(bookID)"
+              string: "maudiobooth://play/\(bookID)"
             )
             let message = NFCNDEFMessage(records: [payload].compactMap(\.self))
 

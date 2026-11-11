@@ -6,6 +6,7 @@ import Models
 import PlayerIntents
 import SwiftUI
 import WidgetKit
+import AppIntents
 
 final class PlayerManager: ObservableObject, Sendable {
   private let userPreferences = UserPreferences.shared
@@ -41,7 +42,7 @@ final class PlayerManager: ObservableObject, Sendable {
 
   private static let currentIDKey = "currentBookID"
   private static let queueKey = "playerQueue"
-  private let sharedDefaults = UserDefaults(suiteName: "group.me.jgrenier.audioBS")
+  private let sharedDefaults = UserDefaults(suiteName: "group.com.rathyou.maudiobooth")
 
   private var cancellables = Set<AnyCancellable>()
   private var serverID: String?

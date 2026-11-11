@@ -2,7 +2,7 @@ import Foundation
 import Nuke
 
 extension ImagePipeline {
-  nonisolated private static let dataCache = try? DataCache(name: "me.jgrenier.audioBS.images")
+  nonisolated private static let dataCache = try? DataCache(name: "com.rathyou.maudiobooth.images")
 
   nonisolated static func audioBooth(customHeaders: [String: String]?) -> ImagePipeline {
     ImagePipeline {

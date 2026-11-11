@@ -78,40 +78,10 @@
           ],
         },
       ],
-    }, {
-      "kind": "folder",
-      "path": "AudioBooth Watch App",
-      "target-membership": [
-        "AudioBooth Watch App",
-      ],
-      "membership-exceptions": [
-        {
-          "target": "AudioBooth Watch App",
-          "exclusions": [
-            "Info.plist",
-          ],
-        },
-      ],
-    }, {
-      "kind": "folder",
-      "path": "AudioBoothWatchWidget",
-      "target-membership": [
-        "AudioBoothWatchWidgetExtension",
-      ],
-      "membership-exceptions": [
-        {
-          "target": "AudioBooth Watch App",
-          "inclusions": [
-            "Complications/WatchComplicationEntry.swift",
-          ],
-        }, {
-          "target": "AudioBoothWatchWidgetExtension",
-          "exclusions": [
-            "Info.plist",
-          ],
-        },
-      ],
-    }, {
+    },
+    { "kind": "folder", "path": "AudioBooth Watch App" },
+    { "kind": "folder", "path": "AudioBoothWatchWidget" },
+    {
       "kind": "folder",
       "path": "AudioBoothWidget",
       "target-membership": [
@@ -137,19 +107,8 @@
       "name": "Frameworks",
       "children": [
         { "path": "<SDK>/System/Library/Frameworks/StoreKit.framework", "target-membership": [ "AudioBooth/frameworks" ] },
-        {
-          "path": "<SDK>/System/Library/Frameworks/WidgetKit.framework",
-          "target-membership": [
-            "AudioBoothWidgetExtension/frameworks",
-            "AudioBoothWatchWidgetExtension/frameworks",
-          ],
-        }, {
-          "path": "<SDK>/System/Library/Frameworks/SwiftUI.framework",
-          "target-membership": [
-            "AudioBoothWidgetExtension/frameworks",
-            "AudioBoothWatchWidgetExtension/frameworks",
-          ],
-        },
+        { "path": "<SDK>/System/Library/Frameworks/WidgetKit.framework", "target-membership": [ "AudioBoothWidgetExtension/frameworks" ] },
+        { "path": "<SDK>/System/Library/Frameworks/SwiftUI.framework", "target-membership": [ "AudioBoothWidgetExtension/frameworks" ] },
       ],
     }, {
       "kind": "group",
@@ -164,9 +123,7 @@
       "name": "Products",
       "children": [
         { "path": "<PRODUCTS>/AudioBooth.app", "id": "3FC8DC6E2E638F5E00A4B080", "type": "wrapper.application", "index": false },
-        { "path": "<PRODUCTS>/AudioBooth Watch App.app", "id": "3FBEA0652E8CD49300976BA0", "type": "wrapper.application", "index": false, "target-membership": [ { "build-phase": "AudioBooth/copy/Embed Watch Content", "platforms": [ "ios" ], "header-preservation": "remove-on-copy" } ] },
         { "path": "<PRODUCTS>/AudioBoothWidgetExtension.appex", "id": "3F2D3BF32EBE711800D49AFF", "type": "wrapper.app-extension", "index": false, "target-membership": [ { "build-phase": "AudioBooth/copy/Embed Foundation Extensions", "platforms": [ "ios" ], "header-preservation": "remove-on-copy" } ] },
-        { "path": "<PRODUCTS>/AudioBoothWatchWidgetExtension.appex", "id": "3F5A20502F6E656C00CFD89E", "type": "wrapper.app-extension", "index": false, "target-membership": [ { "build-phase": "AudioBooth Watch App/copy/Embed Foundation Extensions", "header-preservation": "remove-on-copy" } ] },
       ],
     },
     { "path": "Signing.xcconfig" },
@@ -178,7 +135,6 @@
       "product": "Products/AudioBooth.app",
       "product-type": "application",
       "dependencies": [
-        { "target": "AudioBooth Watch App", "platforms": [ "ios" ] },
         { "target": "AudioBoothWidgetExtension", "platforms": [ "ios" ] },
       ],
       "build-phases": [
@@ -311,55 +267,26 @@
         "CODE_SIGN_ENTITLEMENTS[config=Debug]": "AudioBooth/AudioBooth.entitlements",
         "CODE_SIGN_ENTITLEMENTS[config=Release]": "AudioBooth/AudioBooth.entitlements",
         "CODE_SIGN_ENTITLEMENTS[config=Release][sdk=macosx*]": "AudioBooth/AudioBooth Mac.entitlements",
+        "DEVELOPMENT_TEAM": "ZL85P8JLXU",
         "ENABLE_PREVIEWS": "YES",
         "ENABLE_USER_SCRIPT_SANDBOXING": "NO",
         "INFOPLIST_FILE": "AudioBooth/Info.plist",
+        "INFOPLIST_KEY_CFBundleDisplayName": "Maudiobooth",
+        "INFOPLIST_KEY_ITSAppUsesNonExemptEncryption": "NO",
+        "INFOPLIST_KEY_LSApplicationCategoryType": "public.app-category.books",
+        "INFOPLIST_KEY_NSCameraUsageDescription": "Maudiobooth uses the camera to read a page of your printed book so it can find that spot in the audiobook. No photos are saved or sent anywhere.",
+        "INFOPLIST_KEY_NSLocalNetworkUsageDescription": "Maudiobooth needs access to your local network to connect to your Audiobookshelf server and stream audiobooks.",
+        "INFOPLIST_KEY_NSSpeechRecognitionUsageDescription": "Maudiobooth transcribes your audiobook on this device so Read Along can highlight the passage being narrated and Page Match can find the page you scanned. No audio leaves your device.",
+        "INFOPLIST_KEY_NSSupportsLiveActivities": "YES",
+        "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents": "YES",
+        "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad": "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight",
+        "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight",
         "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
-        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).AudioBS",
+        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).Maudiobooth",
         "SUPPORTS_MACCATALYST": "YES",
         "SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD": "NO",
         "SWIFT_DEFAULT_ACTOR_ISOLATION": "MainActor",
         "TARGETED_DEVICE_FAMILY": "1,2,6",
-      },
-    }, {
-      "name": "AudioBooth Watch App",
-      "id": "3FBEA0642E8CD49300976BA0",
-      "product": "Products/AudioBooth Watch App.app",
-      "product-type": "application",
-      "dependencies": [
-        "AudioBoothWatchWidgetExtension",
-      ],
-      "build-phases": [
-        "compile-sources",
-        "frameworks",
-        "resources",
-        {
-          "kind": "copy",
-          "name": "Embed Foundation Extensions",
-          "bundle-base-path": "plugins-directory",
-        },
-      ],
-      "package-product-members": [
-        {
-          "product-name": "API",
-          "build-phase": { "build-phase": "frameworks" },
-        }, {
-          "product-name": "Models",
-          "build-phase": { "build-phase": "frameworks" },
-        },
-      ],
-      "build-settings": {
-        "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
-        "CLANG_ENABLE_OBJC_WEAK": "YES",
-        "CODE_SIGN_ENTITLEMENTS": "AudioBooth Watch App/AudioBooth Watch App.entitlements",
-        "ENABLE_PREVIEWS": "YES",
-        "INFOPLIST_FILE": "AudioBooth Watch App/Info.plist",
-        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).AudioBS.watchkitapp",
-        "SDKROOT": "watchos",
-        "SKIP_INSTALL": "YES",
-        "SWIFT_DEFAULT_ACTOR_ISOLATION": "MainActor",
-        "TARGETED_DEVICE_FAMILY": "4",
-        "WATCHOS_DEPLOYMENT_TARGET": "10",
       },
     }, {
       "name": "AudioBoothWidgetExtension",
@@ -384,32 +311,12 @@
         "ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME": "WidgetBackground",
         "CLANG_ENABLE_OBJC_WEAK": "YES",
         "CODE_SIGN_ENTITLEMENTS": "AudioBoothWidget/AudioBoothWidgetExtension.entitlements",
+        "DEVELOPMENT_TEAM": "ZL85P8JLXU",
         "INFOPLIST_FILE": "AudioBoothWidget/Info.plist",
         "IPHONEOS_DEPLOYMENT_TARGET": "18.0",
-        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).AudioBS.widget",
+        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).Maudiobooth.widget",
         "SKIP_INSTALL": "YES",
         "TARGETED_DEVICE_FAMILY": "1,2",
-      },
-    }, {
-      "name": "AudioBoothWatchWidgetExtension",
-      "id": "3F5A204F2F6E656C00CFD89E",
-      "product": "Products/AudioBoothWatchWidgetExtension.appex",
-      "product-type": "app-extension",
-      "build-phases": [
-        "compile-sources",
-        "frameworks",
-        "resources",
-      ],
-      "build-settings": {
-        "ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME": "WidgetBackground",
-        "CLANG_ENABLE_OBJC_WEAK": "YES",
-        "CODE_SIGN_ENTITLEMENTS": "AudioBoothWatchWidget/AudioBoothWatchWidgetExtension.entitlements",
-        "INFOPLIST_FILE": "AudioBoothWatchWidget/Info.plist",
-        "PRODUCT_BUNDLE_IDENTIFIER": "$(ORG_IDENTIFIER).AudioBS.watchkitapp.AudioBoothWatchWidget",
-        "SDKROOT": "watchos",
-        "SKIP_INSTALL": "YES",
-        "TARGETED_DEVICE_FAMILY": "4",
-        "WATCHOS_DEPLOYMENT_TARGET": "10",
       },
     },
   ],

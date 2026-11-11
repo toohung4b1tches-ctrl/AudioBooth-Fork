@@ -8,7 +8,7 @@
 		<true/>
 	</dict>
 	<key>CFBundleDisplayName</key>
-	<string>AudioBooth</string>
+	<string>Maudiobooth</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>

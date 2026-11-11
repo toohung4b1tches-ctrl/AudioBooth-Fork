@@ -10,7 +10,7 @@ struct AudioBoothWatchWidget: Widget {
       WatchComplicationView(entry: entry)
         .containerBackground(.clear, for: .widget)
     }
-    .configurationDisplayName("AudioBooth")
+    .configurationDisplayName("Maudiobooth")
     .description("Shows your current audiobook progress")
     .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryCorner])
   }
@@ -46,7 +46,7 @@ struct CornerComplicationView: View {
             Text(title)
           }
         } else {
-          Text("AudioBooth")
+          Text("Maudiobooth")
         }
       }
   }

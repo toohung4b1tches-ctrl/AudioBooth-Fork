@@ -139,11 +139,11 @@ struct TipJarView: View {
           Text("You're a supporter")
             .font(.headline)
             .foregroundStyle(.primary)
-          Text("Thank you for sustaining AudioBooth!")
+          Text("Thank you for sustaining Maudiobooth!")
             .font(.subheadline)
             .foregroundStyle(.secondary)
         } else {
-          Text("Help sustain AudioBooth")
+          Text("Help sustain Maudiobooth")
             .font(.headline)
             .foregroundStyle(.primary)
           Text("Indie app. Powered by supporters.")
