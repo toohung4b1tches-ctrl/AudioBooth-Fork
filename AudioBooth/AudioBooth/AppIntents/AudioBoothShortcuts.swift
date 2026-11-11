@@ -3,7 +3,20 @@ import PlayerIntents
 
 @available(iOS 18.0, *)
 struct AudioBoothShortcuts: AppShortcutsProvider {
+  // iOS allows at most 10 App Shortcuts. SkipToPreviousChapterIntent was dropped to make room
+  // for JumpIntoBookIntent; it remains available as an action in the Shortcuts app.
   static var appShortcuts: [AppShortcut] {
+    AppShortcut(
+      intent: JumpIntoBookIntent(),
+      phrases: [
+        "Jump into \(\.$book) with \(.applicationName)",
+        "Jump into \(\.$book) in \(.applicationName)",
+        "Read along with \(\.$book) in \(.applicationName)",
+      ],
+      shortTitle: "Jump into book",
+      systemImageName: "book.fill"
+    )
+
     AppShortcut(
       intent: PlayAudiobookIntent(),
       phrases: [
@@ -70,16 +83,6 @@ struct AudioBoothShortcuts: AppShortcutsProvider {
       ],
       shortTitle: "Next chapter",
       systemImageName: "forward.end.fill"
-    )
-
-    AppShortcut(
-      intent: SkipToPreviousChapterIntent(),
-      phrases: [
-        "Skip to previous chapter in \(.applicationName)",
-        "Previous chapter in \(.applicationName)",
-      ],
-      shortTitle: "Previous chapter",
-      systemImageName: "backward.end.fill"
     )
 
     AppShortcut(

@@ -77,7 +77,7 @@ extension EbookReaderViewModel {
     let sentence = timeline.overlay.clips[index].text
     applyReadAlongDecorations(sentence: sentence, word: nil)
 
-    if preferences.readAlongFollowsNarration {
+    if followsNarration {
       followNarration(sentence: sentence, word: nil)
     }
   }

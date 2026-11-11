@@ -131,10 +131,89 @@ extension EbookReaderViewModel {
   }
 
   func syncReadAlongPreferences() {
+    if let forcedAt = followSettingWhenForced, forcedAt != preferences.readAlongFollowsNarration {
+      followSettingWhenForced = nil
+    }
+
     guard !isCatchingUpToNarration else { return }
 
-    readAlong?.followsNarration = preferences.readAlongFollowsNarration
+    readAlong?.followsNarration = followsNarration
     readAlong?.highlightsWord = preferences.readAlongHighlightsWord
+  }
+
+  /// Whether the page should move with the narrator: the user's setting, or forced on by a jump-in.
+  var followsNarration: Bool {
+    followSettingWhenForced != nil || preferences.readAlongFollowsNarration
+  }
+
+  // MARK: - Jump into book
+
+  /// Starts Read Along so the page follows the narrator, whatever the "follow narration" setting
+  /// is. Uses the book's imported narration when it has one, otherwise speech recognition.
+  /// When Read Along can't run, the audio keeps playing and a toast says why.
+  func startReadAlongFollowingNarrator() {
+    guard publication != nil else {
+      startsReadAlongOnLoad = true
+      return
+    }
+
+    catchUpMessage = nil
+    isCatchingUpToNarration = false
+    followSettingWhenForced = preferences.readAlongFollowsNarration
+    readAlong?.followsNarration = true
+
+    Task { await beginReadAlongFollowingNarrator() }
+  }
+
+  private func beginReadAlongFollowingNarrator() async {
+    if let mediaOverlayLoad {
+      await mediaOverlayLoad.value
+    }
+
+    if mediaOverlayTimeline != nil {
+      if !isFollowingMediaOverlay {
+        toggleMediaOverlayReadAlong()
+      }
+      return
+    }
+
+    guard readAlong?.status.isActive != true else { return }
+
+    guard supportsReadAlong else {
+      Toast(error: readAlongUnavailableReason).show()
+      return
+    }
+
+    // The player was just asked to play; give its session a moment to start rather than
+    // pressing play again (which can extend a sleep timer).
+    var checks = 0
+    while matchingSession() == nil, checks < Self.sessionChecksBeforeReadAlong {
+      try? await Task.sleep(for: .seconds(Self.secondsBetweenSessionChecks))
+      checks += 1
+    }
+
+    guard readAlong?.status.isActive != true else { return }
+
+    if let readAlong {
+      readAlong.followsNarration = true
+      readAlong.toggle()
+    } else {
+      startReadAlong()
+    }
+    updateAutoScroll()
+  }
+
+  private var readAlongUnavailableReason: String {
+    guard #available(iOS 26.0, *) else {
+      return String(localized: "Read Along requires iOS 26 or later.")
+    }
+    guard SpeechTranscriber.isAvailable else {
+      return String(localized: "Read Along isn't supported on this device.")
+    }
+    guard navigator is DecorableNavigator else {
+      return String(localized: "Read Along isn't available for this ebook format.")
+    }
+    return String(localized: "Read Along isn't available for this book.")
   }
 
   private func startReadAlong() {
@@ -164,7 +243,7 @@ extension EbookReaderViewModel {
       }
     )
 
-    coordinator.followsNarration = isCatchingUpToNarration || preferences.readAlongFollowsNarration
+    coordinator.followsNarration = isCatchingUpToNarration || followsNarration
     coordinator.highlightsWord = preferences.readAlongHighlightsWord
 
     coordinator.onHighlightChanged = { [weak self] sentence, word in

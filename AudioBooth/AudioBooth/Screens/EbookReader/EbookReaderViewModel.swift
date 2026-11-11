@@ -55,6 +55,12 @@ final class EbookReaderViewModel: EbookReaderView.Model {
   var mediaOverlayRetargetTask: Task<Void, Never>?
   var hasPositionedReader = false
 
+  /// Set by "Jump into book": start Read Along as soon as the ebook finishes loading.
+  var startsReadAlongOnLoad = false
+  /// The "follow narration" setting when a jump-in forced following on. Following stays forced
+  /// until the user changes that setting or taps Read Along themselves.
+  var followSettingWhenForced: Bool?
+
   private var catchUpCheck: Task<Void, Never>?
   private var cancellables = Set<AnyCancellable>()
   private var autoScrollTask: Task<Void, Never>?
@@ -154,6 +160,8 @@ final class EbookReaderViewModel: EbookReaderView.Model {
   }
 
   override func onReadAlongTapped() {
+    followSettingWhenForced = nil
+
     if let mediaOverlayLoad {
       Task {
         await mediaOverlayLoad.value
@@ -361,7 +369,12 @@ final class EbookReaderViewModel: EbookReaderView.Model {
       updateCurrentChapterIndex()
       setupMediaOverlay(for: publication)
       supportsReadAlong = isReadAlongSupported
-      refreshCatchUpOffer()
+      if startsReadAlongOnLoad {
+        startsReadAlongOnLoad = false
+        startReadAlongFollowingNarrator()
+      } else {
+        refreshCatchUpOffer()
+      }
 
       await setupChapters()
       (chapterProgress as? ChapterProgressViewModel)?.chapters = chapters

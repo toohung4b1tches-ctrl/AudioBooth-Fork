@@ -15,6 +15,10 @@ final class PlayerManager: ObservableObject, Sendable {
 
   @Published var current: BookPlayer.Model? {
     didSet {
+      if current?.id != oldValue?.id, #available(iOS 18.0, *) {
+        AudioBoothShortcuts.updateAppShortcutParameters()
+      }
+
       if let current {
         guard
           let library = Audiobookshelf.shared.libraries.current,
@@ -133,6 +137,16 @@ final class PlayerManager: ObservableObject, Sendable {
     current != nil
   }
 
+  /// The audiobook in the player, or the last one played in the current library.
+  /// Nil when the current item is a podcast episode.
+  var currentBookID: String? {
+    if let current {
+      return current.podcastID == nil ? current.id : nil
+    }
+    guard let libraryID = Audiobookshelf.shared.libraries.current?.id else { return nil }
+    return currentIDsByLibrary[libraryID]
+  }
+
   var isPlaying: Bool {
     current?.isPlaying ?? false
   }
@@ -236,6 +250,84 @@ final class PlayerManager: ObservableObject, Sendable {
     } else {
       Toast(error: "Ebook not available").show()
     }
+  }
+
+  // MARK: - Jump into book
+
+  private static let coverDismissalDelay = Duration.milliseconds(600)
+
+  /// Makes `bookID` the current audiobook, starts it playing, and opens the fastest way into it:
+  /// the ebook reader with Read Along following the narrator when there is an ebook, otherwise the
+  /// full player.
+  func jumpIn(bookID: String) async throws {
+    let remoteBook: Book?
+    let localBook = try? LocalBook.fetch(bookID: bookID)
+
+    if current?.id != bookID {
+      if let localBook, localBook.mediaType.contains(.audiobook) {
+        setCurrent(localBook)
+        remoteBook = nil
+      } else {
+        let book = try await Audiobookshelf.shared.books.fetch(id: bookID)
+        guard book.mediaType.contains(.audiobook) else { throw ResumePlaybackError.couldNotStart }
+        setCurrent(book)
+        remoteBook = book
+      }
+    } else {
+      remoteBook = nil
+    }
+
+    guard current?.id == bookID else { throw ResumePlaybackError.couldNotStart }
+
+    if !isPlaying {
+      play()
+    }
+
+    if let openReader = reader as? EbookReaderViewModel, openReader.bookID == bookID {
+      isShowingFullPlayer = false
+      openReader.startReadAlongFollowingNarrator()
+      return
+    }
+
+    guard let source = await ebookSource(bookID: bookID, localBook: localBook, remoteBook: remoteBook) else {
+      if reader != nil {
+        reader = nil
+        try? await Task.sleep(for: Self.coverDismissalDelay)
+      }
+      showFullPlayer()
+      return
+    }
+
+    if isShowingFullPlayer || reader != nil {
+      isShowingFullPlayer = false
+      reader = nil
+      try? await Task.sleep(for: Self.coverDismissalDelay)
+    }
+
+    let model = EbookReaderViewModel(source: source)
+    model.startsReadAlongOnLoad = true
+    reader = model
+  }
+
+  /// Prefers the downloaded ebook; falls back to streaming it from the server.
+  private func ebookSource(
+    bookID: String,
+    localBook: LocalBook?,
+    remoteBook: Book?
+  ) async -> EbookReaderViewModel.Source? {
+    if let url = localBook?.ebookLocalPath {
+      return .local(url: url, bookID: bookID)
+    }
+
+    let book: Book?
+    if let remoteBook {
+      book = remoteBook
+    } else {
+      book = try? await Audiobookshelf.shared.books.fetch(id: bookID)
+    }
+
+    guard let book, book.ebookURL != nil else { return nil }
+    return .book(book)
   }
 
 }
